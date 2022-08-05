@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User as UserModel;
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse as RedirectResponseAlias;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Contracts\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -16,20 +18,24 @@ class Socialize extends Controller
 {
     const TABLE_PREFIX = 'provider_';
 
+    private string $driver = '';
+
     /**
      * @param Request $request
      * @param string|null $driver
-     * @return Authenticatable
+     * @return Application|Redirector|RedirectResponseAlias
      * @throws Exception
      */
-    public function callback(Request $request, string $driver = null): Authenticatable
+    public function callback(Request $request, string $driver = null): Application|RedirectResponseAlias|Redirector
     {
-        $customer = $this->getSocializeProvider($driver)->user();
+        $this->driver = $driver;
+        $customer = $this->getSocializeProvider($this->driver)->user();
         if (!$customer->getId()) {
             throw new Exception('Customer not found.');
         }
+        $this->login($customer, $driver);
 
-        return $this->login($customer);
+        return redirect()->route('home');
     }
 
     /**
@@ -51,7 +57,9 @@ class Socialize extends Controller
      */
     private function login(User $customer, string $driver = null): ?Authenticatable
     {
-        $provider = $this->getSocializeProvider($driver);
+
+
+        $provider = $this->getSocializeProvider($this->driver);
 
         $user = $provider->createUser($customer);
 
@@ -61,10 +69,10 @@ class Socialize extends Controller
     }
 
     /**
-     * @param User $user
+     * @param object $user
      * @return mixed
      */
-    public function createUser(User $user): mixed
+    public function createUser(object $user): mixed
     {
         return UserModel::updateOrCreate([
             self::TABLE_PREFIX . 'id' => $user->id,], [
@@ -83,7 +91,9 @@ class Socialize extends Controller
      */
     public function redirect(Request $request, string $driver = null): RedirectResponse|RedirectResponseAlias
     {
-        return $this->getSocializeProvider($driver)->redirect();
+        $this->driver = $driver;
+
+        return $this->getSocializeProvider($this->driver)->redirect();
     }
 
     /**

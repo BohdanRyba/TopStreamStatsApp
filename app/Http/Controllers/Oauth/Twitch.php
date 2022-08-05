@@ -38,10 +38,10 @@ class Twitch implements Provider
     }
 
     /**
-     * @param User $user
+     * @param object $user
      * @return mixed
      */
-    public function createUser(User $user): mixed
+    public function createUser(object $user): mixed
     {
         return UserModel::updateOrCreate([
             self::TABLE_PREFIX . 'id' => $user->id,], [
