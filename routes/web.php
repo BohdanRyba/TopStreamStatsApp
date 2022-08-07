@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Twitch\TwitchService;
 use App\Http\Controllers\Oauth\Socialize;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('test', [TwitchService::class, 'getList'])->name('twitch.streams');
 Route::get('/auth/{driver}/redirect', [Socialize::class, 'redirect'])->name('auth.redirect');
 
 Route::get('/login/{driver}/callback', [Socialize::class, 'callback'])->name('auth.callback');
