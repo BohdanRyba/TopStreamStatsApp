@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Http\Controllers\Api\V2\Twitch;
 
 use App\HelperTraits\Serializer;
@@ -64,7 +65,7 @@ class TwitchController extends Controller
 
     public function getTopStreams(Request $request): bool|string
     {
-$data= $this->dataCollector->top100Streams(sort: $request->get('sort'));
+        $data = $this->dataCollector->top100Streams(sort: $request->get('sort'));
         return $data->toJson();
     }
 }

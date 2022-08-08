@@ -57,7 +57,7 @@ class DataCollector implements DataCollectorContract
      */
     public function sameAmountViewersStreams(string $sort = "ASC"): CollectionAlias
     {
-        return Stream::query()->select('game_name','viewer_count')->whereIn('viewer_count', function ($query) {
+        return Stream::query()->select('game_name', 'viewer_count')->whereIn('viewer_count', function ($query) {
             $query->select('viewer_count')->from('streams')->groupBy('viewer_count')->havingRaw('count(*) > 1');
         })->orderBy('game_name', $sort)->distinct()->get();
     }
@@ -68,7 +68,7 @@ class DataCollector implements DataCollectorContract
      */
     public function streamsWithOddViewers(string $sort = "ASC"): Collection|array
     {
-        return Stream::query()->select('game_name','viewer_count')->groupBy('game_name','viewer_count')->whereRaw('viewer_count %2 != 0')->orderBy('game_name', $sort)->get();
+        return Stream::query()->select('game_name', 'viewer_count')->groupBy('game_name', 'viewer_count')->whereRaw('viewer_count %2 != 0')->orderBy('game_name', $sort)->get();
     }
 
     /**
@@ -77,6 +77,6 @@ class DataCollector implements DataCollectorContract
      */
     public function streamsWithEvenViewers(string $sort = "ASC"): Collection|array
     {
-        return Stream::query()->select('game_name','viewer_count')->groupBy('game_name','viewer_count')->whereRaw('viewer_count %2 = 0')->orderBy('game_name', $sort)->get();
+        return Stream::query()->select('game_name', 'viewer_count')->groupBy('game_name', 'viewer_count')->whereRaw('viewer_count %2 = 0')->orderBy('game_name', $sort)->get();
     }
 }

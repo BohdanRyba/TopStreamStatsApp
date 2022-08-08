@@ -1,17 +1,18 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\HelperTraits;
 
 trait Serializer
 {
     /**
-     * @param array $data
-     * @return bool|string
+     * @param mixed|null $data
+     * @return array
      */
-    public function serialize(array $data = []): bool|string
+    public function toArray(mixed $data = null): array
     {
-        return json_encode($data);
+        return $this->unserialize($this->serialize($data));
     }
 
     /**
@@ -24,11 +25,11 @@ trait Serializer
     }
 
     /**
-     * @param mixed|null $data
-     * @return array
+     * @param array $data
+     * @return bool|string
      */
-    public function toArray(mixed $data = null): array
+    public function serialize(array $data = []): bool|string
     {
-        return $this->unserialize($this->serialize($data));
+        return json_encode($data);
     }
 }

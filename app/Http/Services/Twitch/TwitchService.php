@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Http\Services\Twitch;
 
 use App\HelperTraits\Serializer;

@@ -6,13 +6,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Stream;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class StreamController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -22,7 +23,7 @@ class StreamController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,8 +33,8 @@ class StreamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -43,8 +44,8 @@ class StreamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Stream $stream
-     * @return \Illuminate\Http\Response
+     * @param Stream $stream
+     * @return Response
      */
     public function show(Stream $stream)
     {
@@ -54,8 +55,8 @@ class StreamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Stream $stream
-     * @return \Illuminate\Http\Response
+     * @param Stream $stream
+     * @return Response
      */
     public function edit(Stream $stream)
     {
@@ -65,9 +66,9 @@ class StreamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Stream $stream
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Stream $stream
+     * @return Response
      */
     public function update(Request $request, Stream $stream)
     {
@@ -77,8 +78,8 @@ class StreamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Stream $stream
-     * @return \Illuminate\Http\Response
+     * @param Stream $stream
+     * @return Response
      */
     public function destroy(Stream $stream)
     {

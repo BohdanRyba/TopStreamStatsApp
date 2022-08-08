@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Contracts\Resources;
 
 use Illuminate\Database\Eloquent\Builder;
