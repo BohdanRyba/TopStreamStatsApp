@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 namespace App\Http\Controllers\Oauth;
 
 use App\Models\User as UserModel;
@@ -45,6 +46,7 @@ class Twitch implements Provider
     {
         return UserModel::updateOrCreate([
             self::TABLE_PREFIX . 'id' => $user->id,], [
+            'avatar' => $user->avatar,
             'name' => $user->name,
             'email' => $user->email,
             self::TABLE_PREFIX . 'token' => $user->token,

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.asoft')
 
 @section('content')
     <div class="container">
@@ -72,8 +72,6 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="{{route('auth.redirect', ['driver'=>\App\Http\Controllers\Oauth\Twitch::DRIVER])}}">Login
-                            Twitch</a>
                     </div>
                 </div>
             </div>
