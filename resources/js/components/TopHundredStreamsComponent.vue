@@ -18,7 +18,7 @@
                         <li class="list-group-item text-white" v-for="top in sql.top">
                             <span class="badge text-black badge-primary mr-2"
                                   :style="{'background-color':'#'+this.getRandomColor()}">{{
-                                    top.total_viewers
+                                    top.viewer_count
                                 }}</span>
                             {{ top.game_name }}
                         </li>
@@ -43,7 +43,7 @@
                         <li class="list-group-item text-white" v-for="top in laravel.top">
                             <span class="badge text-black badge-primary mr-2"
                                   :style="{'background-color':'#'+this.getRandomColor()}">{{
-                                    top.total_viewers
+                                    top.viewer_count
                                 }}</span>
                             {{ top.game_name }}
                         </li>

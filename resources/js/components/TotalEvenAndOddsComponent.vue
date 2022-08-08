@@ -18,7 +18,7 @@
                             <li class="list-group-item text-white" v-for="even in sql.even">
                                 <span class="badge text-black badge-primary mr-2"
                                       :style="{'background-color':'#'+this.getRandomColor()}">
-                                    {{ even.total_viewers }}
+                                    {{ even.viewer_count }}
                                 </span>
                                 {{ even.game_name }}
                             </li>
@@ -32,7 +32,7 @@
                             <li class="list-group-item text-white" v-for="odd in sql.odds">
                                 <span class="badge text-black badge-primary mr-2"
                                       :style="{'background-color':'#'+this.getRandomColor()}">
-                                    {{ odd.total_viewers }}
+                                    {{ odd.viewer_count }}
                                 </span>
                                 {{ odd.game_name }}
                             </li>
@@ -57,7 +57,7 @@
                             <li class="list-group-item text-white" v-for="even in laravel.even">
                                 <span class="badge text-black badge-primary mr-2"
                                       :style="{'background-color':'#'+this.getRandomColor()}">
-                                    {{ even.total_viewers }}
+                                    {{ even.viewer_count }}
                                 </span>
                                 {{ even.game_name }}
                             </li>
@@ -71,7 +71,7 @@
                             <li class="list-group-item text-white" v-for="odd in laravel.odds">
                                 <span class="badge text-black badge-primary mr-2"
                                       :style="{'background-color':'#'+this.getRandomColor()}">{{
-                                        odd.total_viewers
+                                        odd.viewer_count
                                     }}</span>
                                 {{ odd.game_name }}
                             </li>

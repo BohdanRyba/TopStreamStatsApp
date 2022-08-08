@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);declare(strict_types=1);
+declare(strict_types=1);
 
 namespace App\Http\Resources\V1;
 
@@ -56,7 +56,7 @@ WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
      */
     public function streamsWithOddViewers(string $sort = "ASC"): array
     {
-        $sql = "SELECT  DISTINCT game_name FROM streams WHERE viewer_count % 2 != 0  group by game_name ORDER BY game_name {$sort};";
+        $sql = "SELECT  DISTINCT game_name, viewer_count FROM streams WHERE viewer_count % 2 != 0  group by game_name,viewer_count ORDER BY game_name {$sort};";
         return DB::select(DB::raw($sql));
     }
 
@@ -66,7 +66,7 @@ WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
      */
     public function streamsWithEvenViewers(string $sort = "ASC"): array
     {
-        $sql = "SELECT DISTINCT game_name FROM streams WHERE viewer_count % 2 = 0 group by game_name  ORDER BY game_name {$sort};";
+        $sql = "SELECT DISTINCT game_name,viewer_count FROM streams WHERE viewer_count % 2 = 0 group by game_name,viewer_count  ORDER BY game_name {$sort};";
         return DB::select(DB::raw($sql));
     }
 
@@ -88,7 +88,7 @@ GROUP BY game_name, viewer_count ORDER BY viewer_count {$sort} LIMIT 100;";
      */
     public function sameAmountViewersStreams(string $sort = "ASC"): array
     {
-        $sql = "select distinct game_name from streams where viewer_count in (
+        $sql = "select distinct game_name, viewer_count from streams where viewer_count in (
     select viewer_count from streams
     group by viewer_count having count(*) > 1
     order by game_name {$sort}) order by game_name ASC";

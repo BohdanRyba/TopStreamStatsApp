@@ -2,25 +2,39 @@
     <h1 class="text-center">Median amount of viewers</h1>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-12">
-            <div class="card" style="">
-                <div class="card-header mb-3">
-                    <h4 class="card-title text-white"></h4>
-                    <h6 class="card-subtitle text-gray-800 mb-0">Median amount of viewers for all streams (Raw SQL version)</h6>
-                </div>
+            <div class="card card-inverse bg-success">
                 <div class="card-content">
-                    {{median}}
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h3 class="card-text">{{median}}</h3>
+                                <span>Median amount of viewers (SQL)</span>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <i class="ft-user font-large-2 float-right"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-12">
-            <div class="card" style="">
-                <div class="card-header mb-3">
-                    <h6 class="card-subtitle text-gray-800 mb-0">Median amount of viewers for all streams (Laravel version)</h6>
-                </div>
+            <div class="card card-inverse bg-warning">
                 <div class="card-content">
-                    {{median2}}
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h3 class="card-text">{{median}}</h3>
+                                <span>Median amount of viewers (Laravel)</span>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <i class="ft-user font-large-2 float-right"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>

@@ -11,6 +11,10 @@
                 <div class="card-content">
                     <ul class="list-group" style="height: 346px; overflow: auto" v-if="sql.same">
                         <li class="list-group-item text-white" v-for="same in sql.same">
+                            <span class="badge text-black badge-primary mr-2"
+                                  :style="{'background-color':'#'+this.getRandomColor()}">{{
+                                    same.viewer_count
+                                }}</span>
                             {{ same.game_name }}
                         </li>
                     </ul>
@@ -26,6 +30,10 @@
                 <div class="card-content">
                     <ul class="list-group" style="height: 346px; overflow: auto" v-if="laravel.same">
                         <li class="list-group-item text-white" v-for="same in laravel.same">
+                            <span class="badge text-black badge-primary mr-2"
+                                  :style="{'background-color':'#'+this.getRandomColor()}">{{
+                                    same.viewer_count
+                                }}</span>
                             {{ same.game_name }}
                         </li>
                     </ul>

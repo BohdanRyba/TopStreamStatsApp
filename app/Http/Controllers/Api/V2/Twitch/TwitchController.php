@@ -39,9 +39,9 @@ class TwitchController extends Controller
 
     /**
      * @param Request $request
-     * @return bool|string
+     * @return float|int|null
      */
-    public function getMedians(Request $request): bool|string
+    public function getMedians(Request $request): float|int|null
     {
         return $this->dataCollector->medianAmountViewersPerGame();
     }
