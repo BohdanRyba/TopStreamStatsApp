@@ -91,7 +91,7 @@ GROUP BY game_name, viewer_count ORDER BY viewer_count {$sort} LIMIT 100;";
         $sql = "select distinct game_name, viewer_count from streams where viewer_count in (
     select viewer_count from streams
     group by viewer_count having count(*) > 1
-    order by game_name {$sort}) order by game_name ASC";
+    order by viewer_count {$sort}) order by viewer_count {$sort}";
         return DB::select(DB::raw($sql));
     }
 }

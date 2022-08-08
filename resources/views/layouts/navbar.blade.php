@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light header-navbar navbar-static">
+<nav class="navbar navbar-expand-lg navbar-light header-navbar navbar-static ml-0">
     <div class="container-fluid navbar-wrapper">
         <div class="navbar-header d-flex">
             <img class="streamstats-logo-sm" src="{{asset('app-assets/img/logos/app-01.png')}}"
@@ -32,7 +32,8 @@
                                 <a class="dropdown-item" href="{{route('home')}}">
                                     Dashboard
                                 </a>
-                                <a class="dropdown-item" href="auth-login.html">
+                                <a class="dropdown-item" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                     <div class="d-flex align-items-center" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
                                             class="ft-power mr-2"></i><span>Logout</span>

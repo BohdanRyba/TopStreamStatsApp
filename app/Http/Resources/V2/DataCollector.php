@@ -59,7 +59,7 @@ class DataCollector implements DataCollectorContract
     {
         return Stream::query()->select('game_name', 'viewer_count')->whereIn('viewer_count', function ($query) {
             $query->select('viewer_count')->from('streams')->groupBy('viewer_count')->havingRaw('count(*) > 1');
-        })->orderBy('game_name', $sort)->distinct()->get();
+        })->orderBy('viewer_count', $sort)->get();
     }
 
     /**
