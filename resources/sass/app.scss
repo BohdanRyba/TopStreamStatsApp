@@ -6,3 +6,21 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.twitch-btn{
+    background-color: #6441a5;
+    color: #f1f1f1;
+    &:hover{
+        background-color: #b9a3e3;
+        color: #262626;
+    }
+}
+.streamstats-logo{
+    display: block;
+    margin:200px auto;
+    height: 100px;
+    &-sm{
+        height: 40px;
+        margin:20px;
+    }
+}

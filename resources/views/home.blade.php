@@ -1,23 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.asoft')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+    <div class="wrapper">
+        <total-streams-component></total-streams-component>
+        <total-viewers-component></total-viewers-component>
+        <median-viewers-component></median-viewers-component>
+        <total-even-and-odds-component></total-even-and-odds-component>
+        <same-viewers-streams-component></same-viewers-streams-component>
+        <top-hundred-streams-component></top-hundred-streams-component>
     </div>
-</div>
 @endsection

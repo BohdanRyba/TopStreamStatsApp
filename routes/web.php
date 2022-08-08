@@ -15,15 +15,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('test', [TwitchService::class, 'getList'])->name('twitch.streams');
+Route::get('test', function(){
+    return view('dashboard');
+})->name('dashboard');
 Route::get('/auth/{driver}/redirect', [Socialize::class, 'redirect'])->name('auth.redirect');
 
 Route::get('/login/{driver}/callback', [Socialize::class, 'callback'])->name('auth.callback');
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Auth::routes();
-
+})->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes([
+    'login' => false,
+    'register' => false,
+    'reset' => false,
+]);
+
