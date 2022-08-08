@@ -20,7 +20,7 @@ class DataCollector implements DataCollectorContract
     public function totalStreamsPerGame(string $sort = "DESC"): array
     {
         $sql = "SELECT game_id, game_name, COUNT(*) as total_streams FROM streams GROUP BY game_id, game_name  ORDER BY total_streams {$sort};";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 
     /**
@@ -30,7 +30,7 @@ class DataCollector implements DataCollectorContract
     public function highestViewerCountPerGame(string $sort = "DESC"): array
     {
         $sql = "SELECT game_id,game_name, SUM(viewer_count) as total_viewers FROM streams GROUP BY game_id, game_name ORDER BY total_viewers {$sort};";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 
     /**
@@ -46,7 +46,7 @@ FROM (
          ORDER BY d.viewer_count
      ) as dd
 WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
 
     }
 
@@ -57,7 +57,7 @@ WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
     public function streamsWithOddViewers(string $sort = "ASC"): array
     {
         $sql = "SELECT  DISTINCT game_name, viewer_count FROM streams WHERE viewer_count % 2 != 0  group by game_name,viewer_count ORDER BY game_name {$sort};";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 
     /**
@@ -67,7 +67,7 @@ WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
     public function streamsWithEvenViewers(string $sort = "ASC"): array
     {
         $sql = "SELECT DISTINCT game_name,viewer_count FROM streams WHERE viewer_count % 2 = 0 group by game_name,viewer_count  ORDER BY game_name {$sort};";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 
     /**
@@ -79,7 +79,7 @@ WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";
         $sql = "SELECT game_name, viewer_count
 FROM streams
 GROUP BY game_name, viewer_count ORDER BY viewer_count {$sort} LIMIT 100;";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 
     /**
@@ -92,6 +92,6 @@ GROUP BY game_name, viewer_count ORDER BY viewer_count {$sort} LIMIT 100;";
     select viewer_count from streams
     group by viewer_count having count(*) > 1
     order by viewer_count {$sort}) order by viewer_count {$sort}";
-        return DB::select(DB::raw($sql));
+        return DB::select((string)DB::raw($sql));
     }
 }
