@@ -17,7 +17,7 @@ import TopHundredStreamsComponent from './components/TopHundredStreamsComponent.
 const store = createStore({
     state() {
         return {
-            url: "https://app.streamstats.test/api/",
+            url: "/api/",
             api_version: 'v1',
             streams: []
         }
@@ -26,8 +26,8 @@ const store = createStore({
         getApiUrl(state) {
             return state.url
         },
-        getStreamsUrl(){
-            return this.getters.getApiUrl+'streams'
+        getStreamsUrl(state){
+            return state.url+state.api_version+'/streams'
         }
     },
     mutations: {
